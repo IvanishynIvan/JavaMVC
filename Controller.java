@@ -1,35 +1,7 @@
-package sample;
-
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import javafx.util.converter.IntegerStringConverter;
-import sample.Exception;
-import java.io.*;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 /**
- * Контролер для макета огляду файлів. Надає основні дії
- * для зміни, видалення та створення файлів, об'єктів.
- * @autor Іван Іванішин
+ * РљРѕРЅС‚СЂРѕР»РµСЂ РґР»СЏ РјР°РєРµС‚Р° РѕРіР»СЏРґСѓ С„Р°Р№Р»С–РІ. РќР°РґР°С” РѕСЃРЅРѕРІРЅС– РґС–С—
+ * РґР»СЏ Р·РјС–РЅРё, РІРёРґР°Р»РµРЅРЅСЏ С‚Р° СЃС‚РІРѕСЂРµРЅРЅСЏ С„Р°Р№Р»С–РІ, РѕР±'С”РєС‚С–РІ.
+ * @autor Р†РІР°РЅ Р†РІР°РЅС–С€РёРЅ
  * @version 1.0
 */
 
@@ -92,14 +64,14 @@ public class Controller implements Initializable {
     
     
     /**
-     * Ініціазілація класа контролера. 
+     * Р†РЅС–С†С–Р°Р·С–Р»Р°С†С–СЏ РєР»Р°СЃР° РєРѕРЅС‚СЂРѕР»РµСЂР°. 
      * 
-     * @param URl -  шлях до файлу fxml, ResourceBundle - властивості інтернатоналізації графічного інтерфейсу
+     * @param URl -  С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ fxml, ResourceBundle - РІР»Р°СЃС‚РёРІРѕСЃС‚С– С–РЅС‚РµСЂРЅР°С‚РѕРЅР°Р»С–Р·Р°С†С–С— РіСЂР°С„С–С‡РЅРѕРіРѕ С–РЅС‚РµСЂС„РµР№СЃСѓ
      * 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //ініціалізування зміни атрибутів
+        //С–РЅС–С†С–Р°Р»С–Р·СѓРІР°РЅРЅСЏ Р·РјС–РЅРё Р°С‚СЂРёР±СѓС‚С–РІ
         CarNumber.setOnEditCommit(e -> CarNumber_OnEditCommit(e));
         Marka.setOnEditCommit(e -> Marka_OnEditCommit(e));
         Probig.setOnEditCommit(e -> Probig_OnEditCommit(e));
@@ -142,15 +114,15 @@ public class Controller implements Initializable {
                 }
             }
         });
-    }//кінець ініціалізації
+    }//РєС–РЅРµС†СЊ С–РЅС–С†С–Р°Р»С–Р·Р°С†С–С—
 
     /*
-    ----------------------------------------------Управління обробниками---------------------------------------------
+    ----------------------------------------------РЈРїСЂР°РІР»С–РЅРЅСЏ РѕР±СЂРѕР±РЅРёРєР°РјРё---------------------------------------------
      */
     
     /**
-     * Додавання до таблиці отриманих даних від користувача
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * Р”РѕРґР°РІР°РЅРЅСЏ РґРѕ С‚Р°Р±Р»РёС†С– РѕС‚СЂРёРјР°РЅРёС… РґР°РЅРёС… РІС–Рґ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void handleAddButtonClick(ActionEvent event) throws Exception {
             if (isValidInput(event)) {  
@@ -194,8 +166,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * У разі порожніх полів. Повідомляє про відповідне порожнє поле.
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * РЈ СЂР°Р·С– РїРѕСЂРѕР¶РЅС–С… РїРѕР»С–РІ. РџРѕРІС–РґРѕРјР»СЏС” РїСЂРѕ РІС–РґРїРѕРІС–РґРЅРµ РїРѕСЂРѕР¶РЅС” РїРѕР»Рµ.
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     private boolean isValidInput(ActionEvent event) {
         Boolean validInput = true;
@@ -268,8 +240,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Обробка зміни стовпців.
-     * @param Event - cемантична подія, яка вказує на те, що сталася дія
+     * РћР±СЂРѕР±РєР° Р·РјС–РЅРё СЃС‚РѕРІРїС†С–РІ.
+     * @param Event - cРµРјР°РЅС‚РёС‡РЅР° РїРѕРґС–СЏ, СЏРєР° РІРєР°Р·СѓС” РЅР° С‚Рµ, С‰Рѕ СЃС‚Р°Р»Р°СЃСЏ РґС–СЏ
      */
 	@SuppressWarnings("unchecked")
 	public void CarNumber_OnEditCommit(Event e) {
@@ -328,8 +300,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Видалення об'єкта з таблиці вибраного користувачем.
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * Р’РёРґР°Р»РµРЅРЅСЏ РѕР±'С”РєС‚Р° Р· С‚Р°Р±Р»РёС†С– РІРёР±СЂР°РЅРѕРіРѕ РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј.
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void handleDeleteButtonClick(ActionEvent event) {
         if(!observableCarList.isEmpty()) {
@@ -353,8 +325,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Очистка полів для вводу користувача.
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * РћС‡РёСЃС‚РєР° РїРѕР»С–РІ РґР»СЏ РІРІРѕРґСѓ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°.
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void handleClearButtonClick(ActionEvent event) {
         carnumberField.clear();
@@ -368,8 +340,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Відкриття FileChooser для вибору файла для зчитування даних.
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * Р’С–РґРєСЂРёС‚С‚СЏ FileChooser РґР»СЏ РІРёР±РѕСЂСѓ С„Р°Р№Р»Р° РґР»СЏ Р·С‡РёС‚СѓРІР°РЅРЅСЏ РґР°РЅРёС….
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void handleOpen(ActionEvent event) throws Exception {
     	ServiceContainer container = new ServiceContainer();
@@ -394,8 +366,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Відкриття FileChooser для збереження json файла.
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * Р’С–РґРєСЂРёС‚С‚СЏ FileChooser РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ json С„Р°Р№Р»Р°.
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void handleSaveJsonFile(ActionEvent event) throws Exception {	
         Stage secondaryStage = new Stage();
@@ -428,8 +400,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Відкриття FileChooser для збереження log файла.
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * Р’С–РґРєСЂРёС‚С‚СЏ FileChooser РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ log С„Р°Р№Р»Р°.
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void handleSaveLogFile(ActionEvent event)  throws Exception {
     	 Stage secondaryStage = new Stage();
@@ -446,8 +418,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Відкриття вікна "About"
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною 
+     * Р’С–РґРєСЂРёС‚С‚СЏ РІС–РєРЅР° "About"
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ 
      */
     public void handleAbout(ActionEvent event) {
     	Alert dialog = new Alert(AlertType.CONFIRMATION);
@@ -462,8 +434,8 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Закриття програми
-     * @param ActionEvent - це клас чи подія, яка отримуює повні посилання, коли подія буде виконаною
+     * Р—Р°РєСЂРёС‚С‚СЏ РїСЂРѕРіСЂР°РјРё
+     * @param ActionEvent - С†Рµ РєР»Р°СЃ С‡Рё РїРѕРґС–СЏ, СЏРєР° РѕС‚СЂРёРјСѓСЋС” РїРѕРІРЅС– РїРѕСЃРёР»Р°РЅРЅСЏ, РєРѕР»Рё РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєРѕРЅР°РЅРѕСЋ
      */
     public void closeApp(ActionEvent event) {
         Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm", ButtonType.OK, ButtonType.CANCEL);
@@ -482,18 +454,11 @@ public class Controller implements Initializable {
     }
     
     /**
-     * Функція створення дати у певному форматі
-     * @return date - дата та час в даний момент 
+     * Р¤СѓРЅРєС†С–СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ РґР°С‚Рё Сѓ РїРµРІРЅРѕРјСѓ С„РѕСЂРјР°С‚С–
+     * @return date - РґР°С‚Р° С‚Р° С‡Р°СЃ РІ РґР°РЅРёР№ РјРѕРјРµРЅС‚ 
      */
     public String date() {
     	String date = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss").format(new Date());
     	return date;
     }
 }
-
-
-
-
-
-
-
