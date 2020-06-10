@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.7506265664160401" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" style="-fx-background-color: lightgrey;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <items>
+    <AnchorPane>
+         <children>
+            <HBox minWidth="-Infinity" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar fx:id="fileMenu" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                        	<MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open"></MenuItem>
+                        	<SeparatorMenuItem mnemonicParsing="false" />
+    					<Menu mnemonicParsing="false" text="Save">
+       						<MenuItem mnemonicParsing="false" onAction="#handleSaveLogFile" text="Save LogFile"></MenuItem>
+       						<SeparatorMenuItem mnemonicParsing="false" />
+       						<MenuItem mnemonicParsing="false" onAction="#handleSaveJsonFile" text="Save JsonFile"></MenuItem>
+  					 	</Menu>
+    						<SeparatorMenuItem mnemonicParsing="false" />
+    						<MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About"></MenuItem>
+    						<SeparatorMenuItem mnemonicParsing="false" />
+   							<MenuItem mnemonicParsing="false" onAction="#closeApp" text="Exit"></MenuItem>
+						</Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <TableView editable="true" fx:id="carTable" layoutX="1.0" layoutY="30.0" prefHeight="566.0" prefWidth="848.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="0.0">
+              <columns>
+                  <TableColumn fx:id="CarNumber" onEditCommit="#CarNumber_OnEditCommit" prefWidth="50.0" text="CarNumber" />
+                  <TableColumn fx:id="Marka" onEditCommit="#Marka_OnEditCommit" prefWidth="50.0" text="Marka" />
+                <TableColumn fx:id="Probig" onEditCommit="#Probig_OnEditCommit" prefWidth="50.0" text="Probig (km)" />
+                <TableColumn fx:id="Maister" onEditCommit="#Maister_OnEditCommit" prefWidth="50.0" text="Maister" />
+                  <TableColumn fx:id="Price" onEditCommit="#Price_OnEditCommit" prefWidth="50.0" text="Price ($)" />
+              </columns>
+            </TableView>
+             <TextArea editable="false" fx:id="listLogs" layoutX="849.0" layoutY="30.0" prefHeight="567.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="848.0" AnchorPane.topAnchor="30.0"></TextArea>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="1000.0" prefHeight="100.0" prefWidth="1000.0">
+         <children>
+            <HBox />
+            <TextField fx:id="carnumberField" layoutX="14.0" layoutY="14.0" promptText="Car Number..." />
+            <TextField fx:id="markaField" layoutX="201.0" layoutY="14.0" promptText="Marka..." />
+            <TextField fx:id="probigField" layoutX="14.0" layoutY="54.0" promptText="Probig..." />
+            <TextField fx:id="maisterField" layoutX="14.0" layoutY="97.0" promptText="Maister..." />
+            <TextField fx:id="priceField" layoutX="201.0" layoutY="54.0" promptText="Price..." />
+            <Button fx:id="addBtn"  prefWidth="100.0" layoutX="475.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleAddButtonClick" text="Add" />
+            <Button fx:id="deleteBtn" prefWidth="100.0" layoutX="475.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleDeleteButtonClick" text="Delete" />
+            <Button prefWidth="100.0" layoutX="475.0"  layoutY="115.0" mnemonicParsing="false" onAction="#handleClearButtonClick" text="Clear " />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="725.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="res/logo.png" backgroundLoading="true"/>
+            </image>
+        </ImageView>
+        	<Label fx:id="ServiceName" layoutX="950.0" layoutY="75.0" text="Vanyok Service"></Label>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
+
