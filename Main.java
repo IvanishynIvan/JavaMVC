@@ -1,27 +1,17 @@
-package sample;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import java.io.IOException;
-
-/**Основний клас програми
- * @author Іванішин Іван
+/**РћСЃРЅРѕРІРЅРёР№ РєР»Р°СЃ РїСЂРѕРіСЂР°РјРё
+ * @author Р†РІР°РЅС–С€РёРЅ Р†РІР°РЅ
  * @version 1.0
  */
 public class Main extends Application  {
 
     /**
-     * Встановлює додаток інтерфейсу користувача з основним заголовком, піктограмами та вікном
-     * @param primaryStage первинне вікно від JavaFx
+     * Р’СЃС‚Р°РЅРѕРІР»СЋС” РґРѕРґР°С‚РѕРє С–РЅС‚РµСЂС„РµР№СЃСѓ РєРѕСЂРёСЃС‚СѓРІР°С‡Р° Р· РѕСЃРЅРѕРІРЅРёРј Р·Р°РіРѕР»РѕРІРєРѕРј, РїС–РєС‚РѕРіСЂР°РјР°РјРё С‚Р° РІС–РєРЅРѕРј
+     * @param primaryStage РїРµСЂРІРёРЅРЅРµ РІС–РєРЅРѕ РІС–Рґ JavaFx
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("CarServiceView.fxml"));
-        primaryStage.setTitle("Practical work №2");
+        primaryStage.setTitle("Practical work в„–2");
         //Image image = new Image("/res/logo.png");
         primaryStage.getIcons().add(new Image("/res/icon.png"));
         primaryStage.setScene(new Scene(root, 1200, 800));
